@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bootui-shopping-cart": {
+      "type": "http",
+      "url": "http://127.0.0.1:18765/bootui/api/mcp",
+      "tools": ["get_live_activity", "get_request_profile"]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<nav class="workshop-nav" aria-label="Workshop chapters">
+    <h2 class="workshop-nav-title">Workshop chapters</h2>
+    <ol>
+        {% for chapter in site.data.copilot_workshop %}
+        {% assign chapter_url = '/' | append: chapter.slug %}
+        <li{% if chapter.slug == 'prompts/' %} class="workshop-nav-resources"{% endif %}><a href="{{ chapter_url | relative_url }}"{% if page.url == chapter_url %} aria-current="page"{% endif %}>{{ chapter.title }}</a></li>
+        {% endfor %}
+    </ol>
+    <a class="btn workshop-repo" href="https://github.com/jdubois/github-copilot-app-java-workshop">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.543 0-.267-.01-.975-.015-1.913-3.13.68-3.791-1.508-3.791-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.022-.7.078-.686.078-.686 1.13.08 1.725 1.16 1.725 1.16 1.005 1.722 2.637 1.225 3.28.937.102-.728.393-1.225.715-1.507-2.498-.284-5.124-1.249-5.124-5.562 0-1.23.44-2.233 1.16-3.02-.117-.285-.503-1.43.11-2.98 0 0 .945-.302 3.094 1.154a10.79 10.79 0 0 1 5.63 0c2.148-1.456 3.09-1.154 3.09-1.154.615 1.55.23 2.695.113 2.98.722.787 1.158 1.79 1.158 3.02 0 4.324-2.63 5.275-5.136 5.553.404.35.764 1.04.764 2.096 0 1.513-.014 2.733-.014 3.105 0 .302.202.652.774.542A11.252 11.252 0 0 0 12 .75Z"/>
+        </svg>
+        View on GitHub
+    </a>
+</nav>

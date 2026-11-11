@@ -1,0 +1,69 @@
+name: Workshop Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["workshop/**", ".github/workflows/workshop-pages.yml"]
+  pull_request:
+    paths: ["workshop/**", ".github/workflows/workshop-pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: workshop-pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'jdubois/github-copilot-app-java-workshop'
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: workshop
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+          working-directory: workshop
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: workshop/tools/copilot-workshop/package-lock.json
+      - name: Check curriculum and consent behavior
+        run: |
+          python3 -m unittest discover -s tools/copilot-workshop -p 'test_*.py'
+          node --test tools/test-analytics.mjs
+      - name: Build and verify all pages and historical evidence
+        run: |
+          bundle exec jekyll build --destination tools/copilot-workshop/.build/site
+          python3 tools/copilot-workshop/check-site.py --remote
+      - name: Check responsive navigation, copy prompts and consent in Chromium
+        run: |
+          npm --prefix tools/copilot-workshop ci
+          npm --prefix tools/copilot-workshop exec -- playwright install --with-deps chromium
+          node tools/copilot-workshop/test-site.mjs
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: workshop/tools/copilot-workshop/.build/site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy verified workshop
+        id: deployment
+        uses: actions/deploy-pages@v4

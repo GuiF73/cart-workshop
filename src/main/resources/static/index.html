@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The workshop shop</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/shop.css">
+  <script src="/shop.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">The workshop shop<span>Java + GitHub Copilot App</span></a>
+    <a href="#cart">Your cart <span id="cart-count">0</span></a>
+  </header>
+  <main>
+    <div class="introduction">
+      <h1>Everyday supplies.<br>A little less ordinary.</h1>
+      <p>Good tools for your next idea. Pick a notebook, add it to your cart,
+        then add it again. Does the quantity match?</p>
+    </div>
+    <div class="shop">
+      <section aria-labelledby="products-heading">
+        <div class="section-heading"><h2 id="products-heading">The collection</h2><span>16 essentials</span></div>
+        <div class="featured" aria-hidden="true">
+          <div class="notebook"><span>NOTES<br>&amp; IDEAS</span><small>Make something good.</small></div>
+          <div><p>A fresh page.</p><span>The €10 notebook that starts our story.</span></div>
+        </div>
+        <ul id="products" class="products" aria-label="Products"></ul>
+      </section>
+      <section id="cart" class="cart" aria-labelledby="cart-heading">
+        <div class="section-heading"><h2 id="cart-heading">Your cart</h2><span id="line-count">0 products</span></div>
+        <div id="cart-lines" class="cart-lines"></div>
+        <div class="total"><span>Total</span><strong id="total">€0.00</strong></div>
+        <p id="status" role="status">Loading your shop…</p>
+        <div class="demo-actions">
+          <button type="button" id="reset">Reset cart</button>
+          <button type="button" id="sample">Load sample cart</button>
+        </div>
+        <p class="demo-note">A local training shop. Synthetic products, no checkout or payment.
+          The sample cart contains eight different products for the performance exercise.</p>
+      </section>
+    </div>
+    <footer><span id="identity">Checking the running application…</span><span>Restarting resets the demo.</span></footer>
+  </main>
+</body>
+</html>

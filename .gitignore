@@ -1,0 +1,14 @@
+/target/
+/.workshop/
+/.idea/
+/.jdtls-workspace/
+*.log
+.env
+/workshop/.bundle/
+/workshop/vendor/
+/workshop/_site/
+/workshop/.jekyll-cache/
+/workshop/.jekyll-metadata
+/workshop/tools/copilot-workshop/.build/
+/workshop/tools/copilot-workshop/node_modules/
+__pycache__/

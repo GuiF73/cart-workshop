@@ -1,0 +1,33 @@
+{
+  "repository": "github/awesome-copilot",
+  "revision": "7e408815ddcb64889a3683799a85399331cfd4ef",
+  "sha256": {
+    "UPSTREAM-LICENSE": "e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823",
+    "java-hibernate-jpa/SKILL.md": "249c9480cc235bfd1511acfcdd774be9f64f6e16331c99b96b6aac27e7e083bb",
+    "java-hibernate-jpa/references/associations-and-cascade.md": "ecd761f71a823b5e4d322890479dacd5f24b5d03981d9e99db37e62e12719a14",
+    "java-hibernate-jpa/references/fetching-and-n-plus-one.md": "eeb68732c92d74d5e6d5f5b9eb85cf69c0a1f1a92477fececa74ca61adf33b53",
+    "java-hibernate-jpa/references/identifiers-and-entity-design.md": "859cf184a594c527bd7cc503c2b86234deac416fda33b45c966f5b451d061bbf",
+    "java-hibernate-jpa/references/locking-transactions-caching.md": "c61f674d4c21b5033917b34b0eb22e2e58cb81b1ae2d31b5a56c0027347153b7",
+    "java-hibernate-jpa/references/queries-pagination-batching.md": "b76117db5616a6095c3baeaf89a19a4e65a19e76453376426f3fe5513b149b41",
+    "java-hibernate-jpa/references/tooling-and-versions.md": "56a1469a2e68a8604d14f050f433c8b046789bfa2c6e89f7df860d94d5d91cfc",
+    "java-junit/SKILL.md": "836790283679a14b3e1c78ff2f5f596361f4b8155077355f4afa343a4355c537",
+    "java-junit/references/assertj-and-mockito.md": "57ba321cde1b425f9a40ecf377f395d29dce922891f6c54b22f4ccb3e76b7482",
+    "java-junit/references/build-setup.md": "97193e9a1fca184a222811c0b9051f842fc8f1502bb7caa31929dbcad868e439",
+    "spring-boot-testing/SKILL.md": "ee611fc083e16ff402fc9ab221700e851dcd48973911824471b27061ee441489",
+    "spring-boot-testing/references/assertj-basics.md": "7aef2421cde448fa8cf66b2a2fa5cddd61b695b31ebef4b4490281f7ddb91201",
+    "spring-boot-testing/references/assertj-collections.md": "108c029ac107026a4f0454979fcca34fc04172e3ed2f673b68071a9fe36150e3",
+    "spring-boot-testing/references/context-caching.md": "dbc938e69c086be119a02e7572b144c2849f164bed0968a2b78828ae391dd1c3",
+    "spring-boot-testing/references/datajpatest.md": "86cbd8b71b34de66a87c677500ffeb8d826490bed09587110b60a9a56dfb6259",
+    "spring-boot-testing/references/failsafe-integration-tests.md": "5dc80c1069bb73ebeecdd2ab9e84ed34a2a18f10713ffa8c79e58110c616732e",
+    "spring-boot-testing/references/instancio.md": "b4cb670778ebb1f1747e6f20eee50d84383e49a0c880062a35a6838f6b2bb83c",
+    "spring-boot-testing/references/mockitobean.md": "4c94eaab7e27274f96b13dffcbbb26ce44d06ea9e34d3d1aacf9ec6d1feed757",
+    "spring-boot-testing/references/mockmvc-classic.md": "eda16b3957bf881522a5670d464d017239c9b01426e10aff955a7033a32403e8",
+    "spring-boot-testing/references/mockmvc-tester.md": "db478252be94c79eb8af0e71a17f8993896c3efafd4a2b88f55877c2d8541891",
+    "spring-boot-testing/references/restclienttest.md": "a15252889125344f8cf2caf0cfc873c944a80577f73ceac00060a9108b457e88",
+    "spring-boot-testing/references/resttestclient.md": "e5276df7d4e6be4cf40240502612a8cd3e521aad5539d8ceb77ab0e367802d9d",
+    "spring-boot-testing/references/sb4-migration.md": "fc3814b64a0956923d9921b2af0324c93bb9da520ac510529238d74919c58698",
+    "spring-boot-testing/references/test-slices-overview.md": "9e8dedb51bb88ea023af889fe8c239043046f99ef9417a30f26a3032238679fd",
+    "spring-boot-testing/references/testcontainers-jdbc.md": "44187397ec2e314889f56df40aa4fa972f46fa6e99f3d1f1430d34ee77235642",
+    "spring-boot-testing/references/webmvctest.md": "0b33963499584253f5d8c7f9086d25fb852e173b0614683fe9073d63af444f2e"
+  }
+}

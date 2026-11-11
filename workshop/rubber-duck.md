@@ -1,0 +1,106 @@
+---
+layout: default
+title: Review with rubber duck
+description: "Ask the built-in rubber duck agent to challenge the combined implementation before final handoff."
+permalink: /rubber-duck/
+workshop: true
+next: subagents
+next_title: Coordinate five subagents
+---
+
+## What you will learn
+
+Use Copilot App's **rubber duck** agent for an independent critique, assess
+its findings and distinguish a review from permission to apply corrections.
+
+## A critic, not another implementer
+
+Traditional rubber ducking means explaining your code to expose mistakes
+in your reasoning. Copilot's built-in **rubber duck agent** talks back:
+it reviews a plan, implementation or tests and reports meaningful problems.
+It does not edit the code itself.
+
+Copilot selects a different critic model when a suitable one is available.
+You do not need to open another project session or manually choose the critic model.
+A second opinion can catch blind spots, but it is not proof of correctness.
+See <a href="https://docs.github.com/en/copilot/concepts/agent-capabilities/choosing-and-delegating-agent-work/getting-a-second-opinion" target="_blank">the rubber duck guide</a>.
+
+<figure>
+  <a href="{{ site.baseurl }}/assets/illustration-rubber-duck-review.svg" target="_blank"><img src="{{ site.baseurl }}/assets/illustration-rubber-duck-review.svg" alt="Conceptual rubber-duck review: the independent critic reports findings with evidence, you assess them, and corrections require separate approval and verification. The critic does not edit the implementation." width="1440" height="800" loading="lazy"></a>
+  <figcaption>Independent critique informs your decision; it does not grant permission to edit or prove the implementation correct.</figcaption>
+</figure>
+
+## Challenge the combined result
+{: #review-prompt}
+
+Stay in **Cart: boundary tests**, on the verified combined result from the
+previous chapter. If you used local recovery, keep that recovered checkout;
+do not switch back to incomplete remote `main`. Use **Interactive**.
+
+Use `workshop-start`, the tag you created during setup, as the review's starting point.
+Type **`/rubber-duck` in the App composer**, not a terminal, with this request:
+
+```copilot
+/rubber-duck Review the full shopping-cart change from workshop-start
+to this checked result, including the quantity fix, removal, Canvas UI
+changes, query optimization and both parallel contributions.
+For this review only, I approve a read-only independent critic despite the
+starter's no-agents restriction. Keep AGENTS.md and all other restrictions unchanged.
+Look for concrete behavior regressions, missing edge-case coverage,
+incorrect prices/totals and evidence that does not match the code.
+Keep the existing acceptance criteria. Do not edit files, run the app,
+change branches, commit, push or merge.
+Report each meaningful finding with its file/location, impact, supporting
+evidence and suggested correction. Mark unverified assumptions explicitly.
+Return the actual critic's findings, or explain why it could not run.
+```
+
+Inspect the agent activity and returned critique. Do not count a main-agent
+summary as an independent review unless the critic actually ran.
+
+## Decide what to do with the findings
+
+Ask the main Copilot agent to explain which findings it accepts, rejects or
+needs more evidence for. Check the cited code yourself. Do not add a defect
+just to make the demonstration interesting, and do not accept style-only
+suggestions as blocking regressions.
+
+If a finding needs correction, authorize that correction separately.
+Ask Copilot to prepare a **normal follow-up feature branch from this checked
+result before editing**; never commit on the verification checkout or push
+directly to `main`. Keep the existing **Cart: boundary tests** session.
+Review the corrected diff, run the full suite and repeat the affected preview.
+Any follow-up PR needs its own review and merge approval.
+On the normal path, use **Create PR** for the correction, targeting your own
+`main`. Merge and verify that PR, preserving the correction branch, before
+starting the fresh checkout session from verified `main`.
+If you used local recovery, keep the corrected local branch and record
+delivery as blocked; do not switch to incomplete remote `main`.
+If you defer a finding, record the reason and continue from the previously
+verified result without applying that correction.
+
+**Done when:** you have an actual critique, a decision for each actionable
+finding and evidence for any correction you accepted.
+Record that on the [worksheet]({{ site.baseurl }}/worksheet/).
+
+<details markdown="1">
+<summary>If the command or critic model is unavailable</summary>
+
+Check the App's `/` picker. You can also ask “Rubber duck this implementation”
+in the same composer. If no independent critic can run, use a facilitator's
+demonstration or an ordinary review and record the limitation. Do not describe
+a single-model reread as a different-model critique or broaden account permissions.
+
+</details>
+
+The next exercise is different: instead of critiquing this implementation,
+you will start a fresh **Cart: mock checkout** session and coordinate five
+child App sessions to **build mock checkout** in parallel, after approving the
+shared contract: four writers and one read-only reviewer, each in a separate
+worktree. Their work forms one checkout PR.
+
+## What you have learned
+
+- Request an independent critique through **/rubber-duck**, without opening another session.
+- Assess concrete findings against code and acceptance criteria rather than treating the critic as an authority.
+- Separate review from editing and merge permission, and verify accepted corrections on a normal feature branch.

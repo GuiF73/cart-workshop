@@ -1,0 +1,20 @@
+url: "https://www.julien-dubois.com"
+baseurl: "/github-copilot-app-java-workshop"
+title: "Julien Dubois"
+description: "Julien Dubois — Java Champion, creator of JHipster, and Principal Manager at Microsoft, working at the intersection of Java, Open Source, and AI."
+safe:        true
+markdown: kramdown
+exclude: [Gemfile, Gemfile.lock, node_modules, docs, tools/copilot-workshop, tools/test-analytics.mjs, vendor, .bundle]
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+      lang: "en"

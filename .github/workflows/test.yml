@@ -1,0 +1,49 @@
+name: Shopping-cart checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Run all activated tests
+        run: ./mvnw -q test
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: test-reports
+          path: target/surefire-reports
+  reference-contracts:
+    if: github.repository == 'jdubois/github-copilot-app-java-workshop'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Verify exact red and green reference checkpoints
+        run: python3 tools/verify-checkpoints.py
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: checkpoint-receipts
+          path: target/checkpoint-checks
