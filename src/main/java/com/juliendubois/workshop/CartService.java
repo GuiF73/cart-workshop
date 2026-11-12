@@ -52,7 +52,7 @@ public class CartService {
         if (nextQuantity > 99) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cart quantity cannot exceed 99");
         }
-        item.setQuantity(quantity);
+        item.setQuantity(nextQuantity);
         repository.saveAndFlush(item);
         return cart();
     }
